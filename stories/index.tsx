@@ -1,4 +1,6 @@
 import "./effects";
+import "./composition";
+import "./alternative";
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { useState, State } from "../index";

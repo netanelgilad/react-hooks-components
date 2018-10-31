@@ -79,7 +79,16 @@ export function Effect({
 
 export function useEffect(
   doFn: EffectFn,
+  children?: EffectRenderer
+): JSX.Element | null;
+export function useEffect(
+  doFn: EffectFn,
   inputs?: any[],
+  children?: EffectRenderer
+): JSX.Element | null;
+export function useEffect(
+  doFn: EffectFn,
+  inputs?: any[] | EffectRenderer,
   children?: EffectRenderer
 ) {
   if (typeof inputs === "function") {
@@ -87,5 +96,11 @@ export function useEffect(
     inputs = undefined;
   }
 
-  return <Effect doFn={doFn} inputs={inputs} children={children} />;
+  return (
+    <Effect
+      doFn={doFn}
+      inputs={inputs as any[] | undefined}
+      children={children}
+    />
+  );
 }
